@@ -3,6 +3,8 @@ export default function expl(obj, arr) {
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       array.push({ key, value: obj[key] });
+    } else {
+      throw new Error('invalid key');
     }
   }
   array = array.sort((a, b) => (a.key > b.key ? 1 : -1));
