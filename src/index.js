@@ -2,7 +2,7 @@ export default function expl(obj, arr) {
   let array = [];
   const check = arr.every((el) => el in obj);
 
-  if (check && (obj !== {})) {
+  if (check && (Object.keys(obj).length)) {
     for (const key in obj) {
       array.push({ key, value: obj[key] });
     }
