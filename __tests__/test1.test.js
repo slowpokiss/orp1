@@ -30,9 +30,8 @@ test('initial test2', () => {
 
 test('test for invalid key', () => {
   expect(() => {
-    const obj = {name: 'мечник', health: 10, attack: 80};
+    const obj = {};
     expl(obj, ['level', 'speed']);
     Error('invalid key');
   }).toThrow();
 });
-
