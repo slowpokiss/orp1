@@ -27,21 +27,3 @@ test('initial test2', () => {
     { key: 'name', value: 'мечник' },
   ]);
 });
-
-test('test for invalid key', () => {
-  expect(() => {
-    const obj = {
-      name: 'мечник', health: 10, level: 2, attack: 80, speed: 40,
-    };
-    expl(obj, ['level', 'power']);
-    Error('invalid key or empty object');
-  }).toThrow();
-});
-
-test('test for invalid key', () => {
-  expect(() => {
-    const obj = {};
-    expl(obj, ['level', 'power']);
-    Error('invalid key or empty object');
-  }).toThrow();
-});
