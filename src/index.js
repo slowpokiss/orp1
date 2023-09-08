@@ -1,22 +1,26 @@
-export default function expl(obj, arr) {
-  let array = [];
-  for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      array.push({ key, value: obj[key] });
+export default function expl(obj, Array) {
+  const good = [];
+  const noGood = [];
+
+  for (const property in obj) {
+    if (Array.includes(property)) {
+      good.push(property);
+    } else {
+      noGood.push(property);
     }
   }
-  array = array.sort((a, b) => (a.key > b.key ? 1 : -1));
 
-  array.forEach((el, ind) => {
-    if (el.key === arr[1]) {
-      array.splice(0, 0, array.splice(ind, 1)[0]);
-    }
-  });
+  const sortGood = good.sort((a, b) => Array.indexOf(a) - Array.indexOf(b));
+  const sortNoGood = noGood.sort();
 
-  array.forEach((el, ind) => {
-    if (el.key === arr[0]) {
-      array.splice(0, 0, array.splice(ind, 1)[0]);
-    }
-  });
-  return array;
+  const sortedGood = sortGood.map((property) => ({
+    key: property,
+    value: obj[property],
+  }));
+  const unsortedGood = sortNoGood.map((property) => ({
+    key: property,
+    value: obj[property],
+  }));
+
+  return [...sortedGood, ...unsortedGood];
 }
